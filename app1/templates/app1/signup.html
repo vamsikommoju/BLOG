@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block b1 %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">SSV</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app1:login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Contact us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <h2 style="text-align:center">{{msg}}</h2>
+    <br><br><form action="" method="post">
+        <div  class="form-group row">
+            {% csrf_token %}
+            {% for i in form %}
+                <label for="" class="col-sm-2 offset-sm-4 col-form-label">{{i.label_tag}}</label>             
+                <div class="col-sm-3">{{i}}{{i.errors|striptags}}</div>
+            {% endfor %} <br><br><br>
+        </div>
+            <input  class="btn btn-primary col-sm-1 offset-5" type="submit" value="SignUp">
+            <a href="{% url 'app1:login' %}"  class="btn btn-success text-white col-sm-1 offset-0">Login</a>
+        </div>
+    <div class="text-center text-dark">
+        {% if messages %}
+            {% for m in messages %}
+                <h3 {% if m.tags %}
+                        class="{{m.tags}}"
+                    {% endif %}
+                    >{{m}}
+                </h3>
+        </div>
+    </div>
+    </form>
+        {% endfor %}
+    {% endif %}
+{% endblock b1 %}

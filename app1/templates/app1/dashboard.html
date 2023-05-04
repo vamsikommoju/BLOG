@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block b1 %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">SSV</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app1:login' %}">Post</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app1:changepwd' %}">Change Pwd</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app1:changepwd2' %}">Reset Pwd</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app1:logout' %}">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Contact us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><div>
+    <a class="btn btn-warning text-center" href="{% url 'app1:post' %}">POST</a>
+</div>
+    <h2 class="text-center">{{msg}}</h2>
+{% endblock b1 %}

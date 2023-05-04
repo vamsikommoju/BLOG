@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block b1 %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">SSV</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app1:signup' %}">Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app1:dashboard' %}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app1:login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Contact us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <h2 class="text-center">{{msg}}</h2>
+    {% for i in content %}
+        <div class="alert alert-primary">
+            <h1>{{i.title}}</h1>
+            <h4>by {{i.user_id}}</h4>
+        </div>
+        <h3 class="alert alert-secondary">{{i.description}}</h3>
+    {% endfor %}
+    {% for i in pageobj.object_list %}
+            <div class="container-fluid">
+                <div class="row">
+                    <h5 class="alert alert-dark col-sm-8">{{i.title}} - by {{i.user_id}}</h5> 
+                    <h5 class="alert alert-dark col-sm-2">username</h5>
+                    <h5 class="alert alert-dark col-sm-2">date</h5>
+                </div>
+            </div>
+            <b>{{i.description}}</b>
+    {% endfor %}
+    <div class="text-center">
+        {% if pageobj.has_previous %}
+            <a class="btn btn-dark" href="{% url 'home' %}?page={{pageobj.previous_page_number}}">Previous</a>
+        {% endif  %}
+
+        {% if pageobj.has_next %}
+        <a class="btn btn-dark" href="{% url 'home' %}?page={{pageobj.next_page_number}}">Next</a>
+        {% endif  %}
+    </div>
+{% endblock b1 %}

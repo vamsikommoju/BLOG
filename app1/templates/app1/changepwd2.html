@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block b1 %}
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-5">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">SSV</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'app1:login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Contact us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<h2 style="text-align:center">{{msg}}</h2> <br><br>
+<div  class=" form-group row">
+    <div class="col-sm-12 text-center">
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for i in form %}
+        <label for="" class="col-sm-1 offset-0">{{i.label_tag}}</label>
+            {{i}}{{i.errors|striptags}} <br><br>
+        {% endfor %}       
+        <input class="btn btn-success col-sm-2" type="submit" value="Login">
+    </form>
+{% endblock b1 %}
+ 
